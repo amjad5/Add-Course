@@ -2,15 +2,9 @@
 
 namespace App\Http\Controllers;
 
-/*use App\Cart;
-use App\Product;
-use Illuminate\Http\Request;
 
+use Illuminate\Http\Request;
 use App\Http\Requests;
-use Session;
-use Stripe\Charge;
-use Stripe\Stripe;
-*/
 
 class CourseController extends Controller
 {
@@ -19,7 +13,7 @@ class CourseController extends Controller
         $categories = Categories::all();
         $subcategories = SubCategories::all();
 
-        return view('shop.index', ['categories' => $categories, 'subcategories' => $categories]);
+        return view('welcome', ['categories' => $categories, 'subcategories' => $categories]);
     }
     
     public function postAddCourse(Request $request){
