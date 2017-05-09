@@ -5,19 +5,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\Category;
+
 
 class CourseController extends Controller
 {
     public function index()
     {
-        $categories = Categories::all();
-        $subcategories = SubCategories::all();
+        $category = Category::all();
+//        $subcategory = SubCategory::all();
 
-<<<<<<< HEAD
-        return view('welcome', ['categories' => $categories, 'subcategories' => $subcategories]);
-=======
-        return view('welcome', ['categories' => $categories, 'subcategories' => $categories]);
->>>>>>> 078f3a4353489e48fbe1f78d967325f8542d3be8
+        return view('welcome', ['category' => $category, 'subcategory' => $subcategory]);
+        
     }
     
     public function postAddCourse(Request $request){
@@ -30,7 +29,7 @@ class CourseController extends Controller
             ''
             ]);
             
-            $course = new Course([
+/*            $course = new Course([
                 'course' => $request->input('course'),
                 ]);
                 
@@ -49,7 +48,7 @@ class CourseController extends Controller
             $lecture = new Lecture([
                 'lecture' => $request->input('lecture'),
                 ]);
-                
+  */              
             $course()->save();
             
             $course()->categories()->save($category);
@@ -57,8 +56,6 @@ class CourseController extends Controller
             
             $subCategory()->save();
             $subCategory()->lectures()->save($lectures);
-            
-            
             
             return redirect()->route('/');
     }

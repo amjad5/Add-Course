@@ -11,11 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[
+    'uses' => 'CourseController@index',
+    'as' => 'index'
+]);
 
-Route::post('/signup', [
+Route::post('/course', [
     'uses' => 'CourseController@postAddCourse',
     'as' => 'course.save'
 ]);

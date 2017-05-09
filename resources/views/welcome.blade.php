@@ -15,19 +15,17 @@
             @endif
         </div>
         <div>
+
             <form action="{{route('course.save')}}" method="post">
             <label>Select a category</label>	
-            	<select>
-            	    @foreach ($categories -> as $category)
-            	    <option>{{ $category}}</option>
-            	    @foreach
+            	<select> @foreach($category->all() as $categor)
+            	    <option> {{$categor}}</option>
+            	    @endforeach
             	</select>
             	<br><br>
             <label>Select a subcategory</label>
             <select>
-                @foreach ($subcategories as $subcategory)
                 <option>{{ $subcategory}}</option>
-                @endforeach
             </select>
             <br><br>
             
@@ -50,6 +48,7 @@
             
             <button class="btn-primary" type="submit">Save</button>
             </form>
+            
         </div>
     </body>
 </html>

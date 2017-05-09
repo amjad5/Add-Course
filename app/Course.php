@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
 {
+    public $table = "course";
+    
     public function course()
     {
         return $this->belongsTo('App\SubCategory');
