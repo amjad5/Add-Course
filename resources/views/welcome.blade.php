@@ -15,7 +15,7 @@
             @endif
         </div>
         <div>
-            <form action="{{route('course.save') }}" method="post">
+            <form action="{{route('course.save')}}" method="post">
             <label>Select a category</label>	
             	<select>
             	    @foreach ($categories -> as $category)

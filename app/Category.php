@@ -10,4 +10,9 @@ class Category extends Model
     {
         return $this->hasMany('App\SubCategory');
     }
+    
+    public function courses()
+    {
+        return $this->belongsTo('App\Course');
+    }
 }

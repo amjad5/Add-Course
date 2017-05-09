@@ -16,6 +16,11 @@ class Course extends Model
     {
         return $this->hasMany('App\Section');
     }
-
+    
+    public function categories()
+    {
+        return $this->hasMany('App\Category');
+    }
+    
     protected $fillable = ['category', 'subcategory', 'course', 'lecture', 'section'];
 }

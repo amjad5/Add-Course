@@ -19,7 +19,7 @@ class CourseController extends Controller
         $categories = Categories::all();
         $subcategories = SubCategories::all();
 
-        return view('shop.index', ['categories' => $categories, 'subcategories' => $categories]);
+        return view('welcome', ['categories' => $categories, 'subcategories' => $subcategories]);
     }
     
     public function postAddCourse(Request $request){
@@ -33,13 +33,34 @@ class CourseController extends Controller
             ]);
             
             $course = new Course([
-                'category' => $request->input('category'),
-                'subcategory' => $request->input('subcategory'),
                 'course' => $request->input('course'),
-                'section' => $request->input('section'),
-                'lecture' => $request->input('section'),
                 ]);
-            $course->save();
+                
+            $category = new Category([
+                'category' => $request->input('category'),
+                ]);
+                
+            $subCategory = new SubCategory([
+                'subcategory' => $request->input('subcategory'),
+                ]);
+                
+            $section = new Section([
+                'section' => $request->input('section'),
+                ]);
+
+            $lecture = new Lecture([
+                'lecture' => $request->input('lecture'),
+                ]);
+                
+            $course()->save();
+            
+            $course()->categories()->save($category);
+            $course()->sections()->save($section);
+            
+            $subCategory()->save();
+            $subCategory()->lectures()->save($lectures);
+            
+            
             
             return redirect()->route('/');
     }
